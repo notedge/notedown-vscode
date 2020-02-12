@@ -1,0 +1,23 @@
+{
+    "fileTypes": [],
+    "scopeName": "markdown.arc.codeblock",
+    "injectionSelector": "L:markup.fenced_code.block.markdown",
+    "patterns": [
+        {
+            "begin": "(?<=[`~])arc(\\s+[^`~]*)?$",
+            "end": "(^|\\G)(?=\\s*[`~]{3,}\\s*$)",
+            "patterns": [
+                {
+                    "begin": "(^|\\G)(\\s*)(.*)",
+                    "while": "(^|\\G)(?!\\s*([`~]{3,})\\s*$)",
+                    "contentName": "meta.embedded.block.arc",
+                    "patterns": [
+                        {
+                            "include": "source.arc"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

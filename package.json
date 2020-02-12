@@ -1,0 +1,65 @@
+{
+	"name": "vscode-notedown",
+	"displayName": "Arc Language Support",
+	"description": "Highlight and formatter for Arc Readable Configiration",
+	"publisher": "aster",
+	"version": "0.2.1",
+	"icon": "logo.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/GalAster/vscode-arc.git"
+	},
+	"engines": {
+		"vscode": "^1.8.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Formatters"
+	],
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install && tsc",
+		"build": "yarn lint && ts-node syntax/build.ts",
+		"pack": "yarn build && vsce package",
+		"lint": "tslint **/*.ts --fix"
+	},
+	"contributes": {
+		"languages": [
+			{
+				"id": "notedown",
+				"aliases": [
+					"Notedown"
+				],
+				"extensions": [
+					".note"
+				],
+				"filenames": [],
+				"filenamePatterns": [],
+				"mimetypes": [
+					"text/x-arc"
+				],
+				"configuration": "./syntax/note.configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "notedown",
+				"scopeName": "source.note",
+				"path": "./syntax/note.tmLanguage.json"
+			},
+			{
+				"scopeName": "markdown.arc.codeblock",
+				"path": "./syntax/arc.markdown.json",
+				"injectTo": [
+					"text.html.markdown"
+				],
+				"embeddedLanguages": {
+					"meta.embedded.block.arc": "arc"
+				}
+			}
+		]
+	},
+	"devDependencies": {
+		"@types/node": "^11.13.6",
+		"vscode": "^1.1.33"
+	}
+}

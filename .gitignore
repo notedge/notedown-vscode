@@ -1,0 +1,12 @@
+# IDEs
+.vscode
+.idea
+.vs
+
+# Node
+node_modules
+yarn.lock
+
+# Release
+*.vsix
+*.tgz
