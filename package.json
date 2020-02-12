@@ -47,14 +47,11 @@
 				"path": "./syntax/note.tmLanguage.json"
 			},
 			{
-				"scopeName": "markdown.arc.codeblock",
-				"path": "./syntax/arc.markdown.json",
+				"scopeName": "codeblock.note",
+				"path": "./syntax/notecode_extend.json",
 				"injectTo": [
-					"text.html.markdown"
-				],
-				"embeddedLanguages": {
-					"meta.embedded.block.arc": "arc"
-				}
+					"source.note"
+				]
 			}
 		]
 	},

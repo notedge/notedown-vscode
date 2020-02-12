@@ -1,0 +1,41 @@
+{
+	"fileTypes": [],
+	"scopeName": "codeblock.note",
+	"injectionSelector": "L:markup.codeblock.note",
+	"patterns": [
+		{
+			"name": "markup.codeblock.note",
+			"begin": "(?<=[`])(js)(.*)$",
+			"end": "(^|\\G)(?=\\s*[`]{3,}\\s*$)",
+			"patterns": [
+				{
+					"begin": "(^|\\G)(\\s*)(.*)",
+					"while": "(^|\\G)(?!\\s*([`]{3,})\\s*$)",
+					"contentName": "meta.embedded.block.js",
+					"patterns": [
+						{
+							"include": "source.js"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "markup.codeblock.note",
+			"begin": "(?<=[`])(arc)(.*)$",
+			"end": "(^|\\G)(?=\\s*[`]{3,}\\s*$)",
+			"patterns": [
+				{
+					"begin": "(^|\\G)(\\s*)(.*)",
+					"while": "(^|\\G)(?!\\s*([`]{3,})\\s*$)",
+					"contentName": "meta.embedded.block.arc",
+					"patterns": [
+						{
+							"include": "source.arc"
+						}
+					]
+				}
+			]
+		}
+	]
+}

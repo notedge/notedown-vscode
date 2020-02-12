@@ -1,24 +1,45 @@
 markdown-mode Test Cases
 ========================
 
-\comment: ssssss
+̃\title: like
 
-\comment:
 
-1. Lists
---------
+\TOC
 
-\image: 22
+\comment: `注释`
 
-\image[]
+`\comment: 反注释`
 
-\image[] {
 
+\comment: 贪婪匹配
+\image[1]
+\image[[1]]  \comment[error, raw output]
+
+\image{
+    link = "https://i.loli.net/2020/02/12/jwMEzph9O8CTbAX.png",
+    hight = 200, width = 400
 }
 
+\label{1, "https://i.loli.net/2020/02/12/jwMEzph9O8CTbAX.png"}
 
+$$s = 2$$
 
+$$s = 2$$
 
+\import[./path/s.svg]
+
+```arc
+a = 2
+b = 2
+```
+
+\comment[gg]
+
+\def{a, ""}
+
+\label{2, "https://img"}
+
+\ref[1]
 
 Unordered lists:
 

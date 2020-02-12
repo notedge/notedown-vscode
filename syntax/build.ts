@@ -28,3 +28,4 @@ writeFileSync(
     __dirname + '/arc.tmLanguage.json',
     JSON.stringify(syntax, null, 4),
 )
+//s
