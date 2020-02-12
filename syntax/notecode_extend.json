@@ -1,10 +1,10 @@
 {
 	"fileTypes": [],
-	"scopeName": "codeblock.note",
-	"injectionSelector": "L:markup.codeblock.note",
+	"scopeName": "codeblock.notedown",
+	"injectionSelector": "L:markup.codeblock.notedown",
 	"patterns": [
 		{
-			"name": "markup.codeblock.note",
+			"name": "markup.codeblock.notedown",
 			"begin": "(?<=[`])(js)(.*)$",
 			"end": "(^|\\G)(?=\\s*[`]{3,}\\s*$)",
 			"patterns": [
@@ -21,7 +21,7 @@
 			]
 		},
 		{
-			"name": "markup.codeblock.note",
+			"name": "markup.codeblock.notedown",
 			"begin": "(?<=[`])(arc)(.*)$",
 			"end": "(^|\\G)(?=\\s*[`]{3,}\\s*$)",
 			"patterns": [

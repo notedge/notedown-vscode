@@ -30,12 +30,13 @@
 					"Notedown"
 				],
 				"extensions": [
-					".note"
+					".note",
+					".notedown"
 				],
 				"filenames": [],
 				"filenamePatterns": [],
 				"mimetypes": [
-					"text/x-arc"
+
 				],
 				"configuration": "./syntax/note.configuration.json"
 			}
@@ -43,14 +44,14 @@
 		"grammars": [
 			{
 				"language": "notedown",
-				"scopeName": "source.note",
+				"scopeName": "source.notedown",
 				"path": "./syntax/note.tmLanguage.json"
 			},
 			{
-				"scopeName": "codeblock.note",
+				"scopeName": "codeblock.notedown",
 				"path": "./syntax/notecode_extend.json",
 				"injectTo": [
-					"source.note"
+					"source.notedown"
 				]
 			}
 		]
