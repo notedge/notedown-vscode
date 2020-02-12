@@ -1,5 +1,4 @@
-markdown-mode Test Cases
-========================
+# markdown-mode Test Cases
 
 
 1. Lists

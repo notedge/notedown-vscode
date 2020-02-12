@@ -1,5 +1,4 @@
-markdown-mode Test Cases
-========================
+# markdown-mode Test Cases
 
 ̃\title: like
 
@@ -26,7 +25,9 @@ $$s = 2$$
 
 $$s = 2$$
 
-\import[./path/s.svg]
+\import[src/s.svg]
+
+\import{path = path + "str.svg"}
 
 ```arc
 a = 2
@@ -35,7 +36,9 @@ b = 2
 
 \comment[gg]
 
-\def{a, ""}
+\def{a, s}
+
+\def{a, s.map(s)}
 
 \label{2, "https://img"}
 
