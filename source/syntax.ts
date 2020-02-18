@@ -1,8 +1,8 @@
 import { including } from './utils'
+import { repository, raw } from './elements'
 
-import { heading, html } from "./elements";
 
-export const metainfo = {
+export const syntax = {
     name: 'notedown',
     scopeName: 'source.notedown',
     version: 'v0.2.0',
@@ -13,6 +13,6 @@ export const metainfo = {
     patterns: [
         including('Program'),
     ],
-    repository: {
-    },
+    repository: raw
 }
+

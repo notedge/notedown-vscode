@@ -1,6 +1,6 @@
-import { including } from '../utils'
+import { Rule } from '../utils'
 
-export const html: any = {
+export const html: Rule = {
     HTML: {
         patterns: [
             {
