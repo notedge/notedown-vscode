@@ -1,22 +1,18 @@
 {
-	"information_for_contributors": [
-		"This file has been converted from https://github.com/microsoft/vscode-markdown-tm-grammar/blob/master/syntaxes/markdown.tmLanguage",
-		"If you want to provide a fix or improvement, please create a pull request against the original repository.",
-		"Once accepted there, we are happy to receive an update request."
-	],
+	"information_for_contributors": [],
 	"version": "https://github.com/microsoft/vscode-markdown-tm-grammar/commit/8fbbc11a6bb917f287bbe21d0573454020599547",
 	"name": "notedown",
 	"scopeName": "source.notedown",
 	"patterns": [
 		{
-			"include": "#block"
+			"include": "#Program"
 		}
 	],
 	"repository": {
-		"block": {
+		"Program": {
 			"patterns": [
 				{
-					"include": "#heading"
+					"include": "#Heading"
 				},
 				{
 					"include": "#blockquote"
@@ -35,6 +31,9 @@
 				},
 				{
 					"include": "#Command"
+				},
+				{
+					"include": "#Math"
 				}
 			]
 		},
@@ -111,7 +110,7 @@
 			"while": "(^|\\G)\\s*(>) ?"
 		},
 		"Command:Span": {
-			"match": "(\\\\)(\\w+)(\\[)(.*?)(\\])",
+			"match": "(\\\\)(\\w+)((:?\\[.*?\\])+)",
 			"captures": {
 				"1": {
 					"name": "storage.type.punctuation.notedown"
@@ -120,13 +119,22 @@
 					"name": "storage.type.notedown"
 				},
 				"3": {
-					"name": "storage.type.punctuation.notedown"
-				},
-				"4": {
-					"name": "string.single.notedown"
-				},
-				"5": {
-					"name": "storage.type.punctuation.notedown"
+					"patterns": [
+						{
+							"match": "(\\[)(.*?)(\\])",
+							"captures": {
+								"1": {
+									"name": "storage.type.punctuation.notedown"
+								},
+								"2": {
+									"name": "string.quote.notedown"
+								},
+								"3": {
+									"name": "storage.type.punctuation.notedown"
+								}
+							}
+						}
+					]
 				}
 			}
 		},
@@ -190,6 +198,10 @@
 				{
 					"match": "\\w+",
 					"name": "meta.function-call.generic.python"
+				},
+				{
+					"match": "([#&])",
+					"name": "keyword.operator.assignment.nyar"
 				}
 			]
 		},
@@ -204,7 +216,7 @@
 				}
 			}
 		},
-		"heading": {
+		"Heading": {
 			"match": "(?:^|\\G)[ ]{0,3}((#{1,6})\\s+(?=[\\S[^#]]).*?\\s*(#{1,6})?)$\\n?",
 			"captures": {
 				"1": {
@@ -319,7 +331,7 @@
 			"name": "markup.quote.notedown",
 			"patterns": [
 				{
-					"include": "#block"
+					"include": "#Program"
 				}
 			],
 			"while": "(^|\\G)\\s*(>) ?"
@@ -395,19 +407,6 @@
 				}
 			]
 		},
-		"list_paragraph": {
-			"begin": "(^|\\G)(?=\\S)(?![*+->]\\s|[0-9]+\\.\\s)",
-			"name": "meta.paragraph.notedown",
-			"patterns": [
-				{
-					"include": "#inline"
-				},
-				{
-					"include": "text.html.derivative"
-				}
-			],
-			"while": "(^|\\G)(?!\\s*$|#|[ ]{0,3}([-*_>][ ]{2,}){3,}[ \\t]*$\\n?|[ ]{0,3}[*+->]|[ ]{0,3}[0-9]+\\.)"
-		},
 		"lists": {
 			"patterns": [
 				{
@@ -421,7 +420,7 @@
 					"name": "markup.list.unnumbered.notedown",
 					"patterns": [
 						{
-							"include": "#block"
+							"include": "#Program"
 						},
 						{
 							"include": "#list_paragraph"
@@ -439,7 +438,7 @@
 					"name": "markup.list.numbered.notedown",
 					"patterns": [
 						{
-							"include": "#block"
+							"include": "#Program"
 						},
 						{
 							"include": "#list_paragraph"
@@ -448,6 +447,19 @@
 					"while": "((^|\\G)([ ]{2,4}|\\t))|(^[ \\t]*$)"
 				}
 			]
+		},
+		"list_paragraph": {
+			"begin": "(^|\\G)(?=\\S)(?![*+->]\\s|[0-9]+\\.\\s)",
+			"name": "meta.paragraph.notedown",
+			"patterns": [
+				{
+					"include": "#inline"
+				},
+				{
+					"include": "text.html.derivative"
+				}
+			],
+			"while": "(^|\\G)(?!\\s*$|#|[ ]{0,3}([-*_>][ ]{2,}){3,}[ \\t]*$\\n?|[ ]{0,3}[*+->]|[ ]{0,3}[0-9]+\\.)"
 		},
 		"paragraph": {
 			"begin": "(^|\\G)[ ]{0,3}(?=\\S)",
@@ -625,6 +637,57 @@
 			},
 			"match": "(<)((?:https?|ftp)://.*?)(>)",
 			"name": "meta.link.inet.notedown"
+		},
+		"Math": {
+			"patterns": [
+				{
+					"name": "markup.inserted.math.display.notedown",
+					"begin": "(^|\\G)([ ]{0,3})((?<![^\\\\]\\\\)\\$\\$(?!\\$))",
+					"end": "(?<![^\\\\]\\\\)(?<![^\\\\]\\$)(\\$\\$)([\\s]*)$",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.math.display.notedown"
+						}
+					},
+					"endCaptures": {
+						"0": {
+							"name": "punctuation.definition.math.display.notedown"
+						}
+					},
+					"contentName": "meta.embedded.block.katex",
+					"patterns": [
+						{
+							"include": "text.katex"
+						}
+					]
+				},
+				{
+					"name": "markup.inserted.math.inline.notedown",
+					"begin": "(?x) #turn on extended mode\n  (?<!^\\\\)(?<![^\\\\][\\$\\\\]) #without '$' and '\\' on the left\n  (\\$) #a '$'\n  (?![\\s\\$]) #without whitespace and '$' on the right\n  (?=((?!\\s\\$).)* #not match ' $'\n  (?<!\\\\)((\\\\{2})*(\\\\\\$)?)(?<!\\s)(\\$)(?![0-9]) #match the end '$'\n  ) #ensure math closed\n",
+					"end": "(?x) #turn on extended mode\n  (?<![^\\\\][\\$\\\\])(?<!\\s) #without '$' '\\' and whitespace on the left\n  (\\$) #a '$'\n  (?![0-9]) #without number on the right\n  (?!((\\$)(?![\\s\\$])(?=((?!\\s\\$).)+((?<![^\\\\][\\$\\\\])(?<!\\s)(\\$)(?![0-9]))))) #without a begin '$' on the right\n",
+					"captures": {
+						"1": {
+							"name": "punctuation.definition.math.inline.notedown"
+						}
+					},
+					"contentName": "meta.embedded.block.katex",
+					"patterns": [
+						{
+							"name": "markup.inserted.math.inline.notedown",
+							"match": "(?<![^\\\\][\\$\\\\])(?<!\\s)(\\$\\$)",
+							"comment": "match a end '$' and a begin '$'",
+							"captures": {
+								"1": {
+									"name": "punctuation.definition.math.inline.notedown"
+								}
+							}
+						},
+						{
+							"include": "text.katex"
+						}
+					]
+				}
+			]
 		},
 		"Codeblock:Unknown": {
 			"name": "markup.codeblock.notedown",

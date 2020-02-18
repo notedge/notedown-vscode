@@ -3,7 +3,7 @@
 	"displayName": "Arc Language Support",
 	"description": "Highlight and formatter for Arc Readable Configiration",
 	"publisher": "aster",
-	"version": "0.2.1",
+	"version": "0.3.0",
 	"icon": "logo.png",
 	"repository": {
 		"type": "git",
@@ -20,7 +20,7 @@
 		"postinstall": "node ./node_modules/vscode/bin/install && tsc",
 		"build": "yarn lint && ts-node syntax/build.ts",
 		"pack": "yarn build && vsce package",
-		"lint": "tslint **/*.ts --fix"
+		"fmt": "tslint **/*.ts --fix"
 	},
 	"contributes": {
 		"languages": [
@@ -31,13 +31,12 @@
 				],
 				"extensions": [
 					".note",
-					".notedown"
+					".notedown",
+					".fragment"
 				],
 				"filenames": [],
 				"filenamePatterns": [],
-				"mimetypes": [
-
-				],
+				"mimetypes": [],
 				"configuration": "./syntax/note.configuration.json"
 			}
 		],
@@ -53,6 +52,40 @@
 				"injectTo": [
 					"source.notedown"
 				]
+			}
+		],
+		"commands": [
+			{
+				"command": "vscode-notedown.openPreviewToTheSide",
+				"title": "Notedown: Open Preview to the Side",
+				"category": "Notedown",
+				"icon": {
+					"light": "./media/preview-right-light.svg",
+					"dark": "./media/preview-right-dark.svg"
+				}
+			},
+			{
+				"command": "vscode-notedown.openPreview",
+				"title": "Notedown: Open Preview",
+				"category": "Notedown",
+				"icon": {
+					"light": "./media/preview-right-light.svg",
+					"dark": "./media/preview-right-dark.svg"
+				}
+			}
+		],
+		"keybindings": [
+			{
+				"command": "vscode-notedown.openPreviewToTheSide",
+				"key": "ctrl+k v",
+				"mac": "cmd+k v",
+				"when": "editorLangId == notedown"
+			},
+			{
+				"command": "vscode-notedown.openPreview",
+				"key": "ctrl+shift+v",
+				"mac": "cmd+shift+v",
+				"when": "editorLangId == notedown"
 			}
 		]
 	},
