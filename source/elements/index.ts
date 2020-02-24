@@ -38,19 +38,19 @@ export const raw : Rule = {
                 include: '#Heading',
             },
             {
-                include: '#blockquote',
+                include: '#Quote',
             },
             {
-                include: '#lists',
+                include: '#List',
             },
             {
                 include: '#Codeblock:Unknown',
             },
             {
-                include: '#html',
+                include: '#HTML',
             },
             {
-                include: '#paragraph',
+                include: '#Paragraph',
             },
             {
                 include: '#Command',
@@ -344,7 +344,7 @@ export const raw : Rule = {
             },
         ],
     },
-    'blockquote': {
+    'Quote': {
         begin: '(^|\\G)[ ]{0,3}(>) ?',
         captures: {
             2: {
@@ -359,7 +359,7 @@ export const raw : Rule = {
         ],
         while: '(^|\\G)\\s*(>) ?',
     },
-    'html': {
+    'HTML': {
         patterns: [
             {
                 begin: '(^|\\G)\\s*(<!--)',
@@ -430,7 +430,7 @@ export const raw : Rule = {
             },
         ],
     },
-    'lists': {
+    'List': {
         patterns: [
             {
                 begin: '(^|\\G)([ ]{0,3})([*+-])([ \\t])',
@@ -446,7 +446,7 @@ export const raw : Rule = {
                         include: '#Program',
                     },
                     {
-                        include: '#list_paragraph',
+                        include: '#ListParagraph',
                     },
                 ],
                 while: '((^|\\G)([ ]{2,4}|\\t))|(^[ \\t]*$)',
@@ -464,14 +464,14 @@ export const raw : Rule = {
                         include: '#Program',
                     },
                     {
-                        include: '#list_paragraph',
+                        include: '#ListParagraph',
                     },
                 ],
                 while: '((^|\\G)([ ]{2,4}|\\t))|(^[ \\t]*$)',
             },
         ],
     },
-    'list_paragraph': {
+    'ListParagraph': {
         begin: '(^|\\G)(?=\\S)(?![*+->]\\s|[0-9]+\\.\\s)',
         name: 'meta.paragraph.notedown',
         patterns: [
@@ -484,7 +484,7 @@ export const raw : Rule = {
         ],
         while: '(^|\\G)(?!\\s*$|#|[ ]{0,3}([-*_>][ ]{2,}){3,}[ \\t]*$\\n?|[ ]{0,3}[*+->]|[ ]{0,3}[0-9]+\\.)',
     },
-    'paragraph': {
+    'Paragraph': {
         begin: '(^|\\G)[ ]{0,3}(?=\\S)',
         name: 'meta.paragraph.notedown',
         patterns: [

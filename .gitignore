@@ -6,7 +6,9 @@
 # Node
 node_modules
 yarn.lock
+package-lock.json
 
 # Release
 *.vsix
 *.tgz
+dist/

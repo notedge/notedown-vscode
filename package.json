@@ -1,96 +1,126 @@
 {
-	"name": "vscode-notedown",
-	"displayName": "Arc Language Support",
-	"description": "Highlight and formatter for Arc Readable Configiration",
-	"publisher": "aster",
-	"version": "0.3.0",
-	"icon": "logo.png",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/GalAster/vscode-arc.git"
-	},
-	"engines": {
-		"vscode": "^1.8.0"
-	},
-	"categories": [
-		"Programming Languages",
-		"Formatters"
-	],
-	"scripts": {
-		"postinstall": "node ./node_modules/vscode/bin/install && tsc",
-		"build": "yarn lint && ts-node syntax/build.ts",
-		"pack": "yarn build && vsce package",
-		"fmt": "tslint **/*.ts --fix"
-	},
-	"contributes": {
-		"languages": [
-			{
-				"id": "notedown",
-				"aliases": [
-					"Notedown"
-				],
-				"extensions": [
-					".note",
-					".notedown",
-					".fragment"
-				],
-				"filenames": [],
-				"filenamePatterns": [],
-				"mimetypes": [],
-				"configuration": "./syntax/note.configuration.json"
-			}
-		],
-		"grammars": [
-			{
-				"language": "notedown",
-				"scopeName": "source.notedown",
-				"path": "./syntax/note.tmLanguage.json"
-			},
-			{
-				"scopeName": "codeblock.notedown",
-				"path": "./syntax/notecode_extend.json",
-				"injectTo": [
-					"source.notedown"
-				]
-			}
-		],
-		"commands": [
-			{
-				"command": "vscode-notedown.openPreviewToTheSide",
-				"title": "Notedown: Open Preview to the Side",
-				"category": "Notedown",
-				"icon": {
-					"light": "./media/preview-right-light.svg",
-					"dark": "./media/preview-right-dark.svg"
-				}
-			},
-			{
-				"command": "vscode-notedown.openPreview",
-				"title": "Notedown: Open Preview",
-				"category": "Notedown",
-				"icon": {
-					"light": "./media/preview-right-light.svg",
-					"dark": "./media/preview-right-dark.svg"
-				}
-			}
-		],
-		"keybindings": [
-			{
-				"command": "vscode-notedown.openPreviewToTheSide",
-				"key": "ctrl+k v",
-				"mac": "cmd+k v",
-				"when": "editorLangId == notedown"
-			},
-			{
-				"command": "vscode-notedown.openPreview",
-				"key": "ctrl+shift+v",
-				"mac": "cmd+shift+v",
-				"when": "editorLangId == notedown"
-			}
-		]
-	},
-	"devDependencies": {
-		"@types/node": "^11.13.6",
-		"vscode": "^1.1.33"
-	}
+    "name": "vscode-notedown",
+    "private": true,
+    "displayName": "Arc Language Support",
+    "description": "Highlight and formatter for Arc Readable Configiration",
+    "publisher": "aster",
+    "version": "0.3.0",
+    "icon": "logo.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/GalAster/vscode-arc.git"
+    },
+    "categories": [
+        "Programming Languages",
+        "Formatters"
+    ],
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install && tsc",
+        "build": "yarn lint && ts-node syntax/build.ts",
+        "pack": "yarn build && vsce package",
+        "lint": "tslint **/*.ts --fix"
+    },
+    "main": "./dist/extension.js",
+    "engines": {
+        "vscode": "^1.39.0"
+    },
+    "activationEvents": [
+        "onLanguage:notedown"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "notedown",
+                "aliases": [
+                    "Notedown"
+                ],
+                "extensions": [
+                    ".note",
+                    ".notedown",
+                    ".fragment"
+                ],
+                "filenames": [],
+                "filenamePatterns": [],
+                "mimetypes": [],
+                "configuration": "./syntax/note.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "notedown",
+                "scopeName": "source.notedown",
+                "path": "./syntax/note.tmLanguage.json"
+            },
+            {
+                "scopeName": "codeblock.notedown",
+                "path": "./syntax/notecode_extend.json",
+                "injectTo": [
+                    "source.notedown"
+                ]
+            }
+        ],
+        "commands": [
+            {
+                "command": "vscode-notedown.openPreviewToTheSide",
+                "title": "Notedown: Open Preview to the Side",
+                "category": "navigation",
+                "icon": {
+                    "light": "./media/preview-right-light.svg",
+                    "dark": "./media/preview-right-dark.svg"
+                }
+            },
+            {
+                "command": "vscode-notedown.openPreview",
+                "title": "Notedown: Open Preview",
+                "category": "navigation",
+                "icon": {
+                    "light": "./media/preview-right-light.svg",
+                    "dark": "./media/preview-right-dark.svg"
+                }
+            },
+            {
+                "command": "vscode-notedown.format",
+                "title": "Notedown: Format File"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "vscode-notedown.openPreviewToTheSide",
+                "key": "ctrl+k v",
+                "mac": "cmd+k v",
+                "when": "editorLangId == notedown"
+            },
+            {
+                "command": "mvscode-notedown.openPreview",
+                "key": "ctrl+shift+v",
+                "mac": "cmd+shift+v",
+                "when": "editorLangId == notedown"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "vscode-notedown.openPreviewToTheSide",
+                    "when": "editorLangId == notedown",
+                    "group": "navigation"
+                }
+            ],
+            "editor/title": [
+                {
+                    "command": "vscode-notedown.openPreviewToTheSide",
+                    "when": "editorLangId == notedown",
+                    "group": "navigation"
+                }
+            ]
+        }
+    },
+    "dependencies": {
+        "notedown_vscode": "^0.1.1"
+    },
+    "devDependencies": {
+        "@types/node": "^11.13.6",
+        "tslint": "^6.0.0",
+        "typescript": "^3.8.2",
+        "vscode": "^1.1.33"
+    }
 }

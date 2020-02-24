@@ -13,6 +13,6 @@ export const syntax = {
     patterns: [
         including('Program'),
     ],
-    repository: raw
+    repository: raw,
 }
 

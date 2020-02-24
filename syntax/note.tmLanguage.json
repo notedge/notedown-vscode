@@ -1,8 +1,11 @@
 {
-    "information_for_contributors": [],
-    "version": "https://github.com/microsoft/vscode-markdown-tm-grammar/commit/8fbbc11a6bb917f287bbe21d0573454020599547",
     "name": "notedown",
     "scopeName": "source.notedown",
+    "version": "v0.2.0",
+    "uuid": "",
+    "information_for_contributors": [
+        "aster: galaster@foxmail.com"
+    ],
     "patterns": [
         {
             "include": "#Program"
@@ -15,19 +18,19 @@
                     "include": "#Heading"
                 },
                 {
-                    "include": "#blockquote"
+                    "include": "#Quote"
                 },
                 {
-                    "include": "#lists"
+                    "include": "#List"
                 },
                 {
                     "include": "#Codeblock:Unknown"
                 },
                 {
-                    "include": "#html"
+                    "include": "#HTML"
                 },
                 {
-                    "include": "#paragraph"
+                    "include": "#Paragraph"
                 },
                 {
                     "include": "#Command"
@@ -321,7 +324,7 @@
                 }
             ]
         },
-        "blockquote": {
+        "Quote": {
             "begin": "(^|\\G)[ ]{0,3}(>) ?",
             "captures": {
                 "2": {
@@ -336,7 +339,7 @@
             ],
             "while": "(^|\\G)\\s*(>) ?"
         },
-        "html": {
+        "HTML": {
             "patterns": [
                 {
                     "begin": "(^|\\G)\\s*(<!--)",
@@ -407,7 +410,7 @@
                 }
             ]
         },
-        "lists": {
+        "List": {
             "patterns": [
                 {
                     "begin": "(^|\\G)([ ]{0,3})([*+-])([ \\t])",
@@ -423,7 +426,7 @@
                             "include": "#Program"
                         },
                         {
-                            "include": "#list_paragraph"
+                            "include": "#ListParagraph"
                         }
                     ],
                     "while": "((^|\\G)([ ]{2,4}|\\t))|(^[ \\t]*$)"
@@ -441,14 +444,14 @@
                             "include": "#Program"
                         },
                         {
-                            "include": "#list_paragraph"
+                            "include": "#ListParagraph"
                         }
                     ],
                     "while": "((^|\\G)([ ]{2,4}|\\t))|(^[ \\t]*$)"
                 }
             ]
         },
-        "list_paragraph": {
+        "ListParagraph": {
             "begin": "(^|\\G)(?=\\S)(?![*+->]\\s|[0-9]+\\.\\s)",
             "name": "meta.paragraph.notedown",
             "patterns": [
@@ -461,7 +464,7 @@
             ],
             "while": "(^|\\G)(?!\\s*$|#|[ ]{0,3}([-*_>][ ]{2,}){3,}[ \\t]*$\\n?|[ ]{0,3}[*+->]|[ ]{0,3}[0-9]+\\.)"
         },
-        "paragraph": {
+        "Paragraph": {
             "begin": "(^|\\G)[ ]{0,3}(?=\\S)",
             "name": "meta.paragraph.notedown",
             "patterns": [
