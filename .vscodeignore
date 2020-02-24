@@ -1,5 +1,10 @@
 node_modules
-source
-images/**
+source/**/*
+images/**/*
+test/**/*
+
 
 *.tgz
+**/*.ai
+yarn*
+

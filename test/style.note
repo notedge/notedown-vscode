@@ -1,0 +1,72 @@
+
+
+### markdown style
+
+![头像](https://i.loli.net/2019/08/09/j8RkzJ1mNxTswYV.png)
+
+### tex style
+
+\comment: 单行指令
+\img: https://i.loli.net/2019/08/09/j8RkzJ1mNxTswYV.png
+
+\comment: 字符指令
+\img[https://i.loli.net/2019/08/09/j8RkzJ1mNxTswYV.png][头像]
+
+\comment: 参数指令
+\img {"https://i.loli.net/2019/08/09/j8RkzJ1mNxTswYV.png", "头像"}
+
+\comment: 具名参数指令
+\img {
+    link = "https://i.loli.net/2019/08/09/j8RkzJ1mNxTswYV.png"
+    alt = "头像"
+}
+
+## single body
+
+### markdown style
+
+```quote{type = "danger"}
+这是一条**危险**信息
+```
+
+### tex style
+
+\quote: 这是一条普通信息
+
+\quote[这是一条**危险**信息][danger]
+
+\quote {
+    type = "danger"
+    body = "这是一条**危险**信息"
+}
+
+
+### jsx/vue style
+
+<quote type="danger">
+这是一条**危险**信息
+</quote>
+
+
+## Multi bodies
+
+### tex style
+
+\begin{tabs}
+    \push{terms}
+    纸曲笔伏霍音起
+    \push{terms}
+    疑似圣驾过丽沟
+\end{tabs}
+
+
+### jsx/vue style
+
+<tabs>
+    <terms>
+    纸曲笔伏霍音起
+    </terms>
+    <terms>
+    疑似圣驾过丽沟
+    </terms>
+</tabs>

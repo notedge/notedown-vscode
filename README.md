@@ -1,32 +1,19 @@
-Arc support for vscode
+Notedown support for VSCode
 ======================
-[![Site](https://img.shields.io/badge/ARC-v0.4-%23FF4D5B.svg?style=flat-square)](https://github.com/toml-lang/toml)
+[![Site](https://img.shields.io/badge/NOTE-v0.1-%23FF4D5B.svg?style=flat-square)](https://github.com/toml-lang/toml)
 [![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg?style=flat-square)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![LICENSE](https://img.shields.io/badge/license-MPL%202.0-blue.svg?style=flat-square)](https://github.com/GalAster/vscode-toml/blob/master/License.md)
 
-*Arc Readable Configuration*
+*Notedown: TeX like markup language*
 
 
-## Comment
+## Features
 
-![image](https://user-images.githubusercontent.com/17541209/56973933-6bdb8a00-6ba0-11e9-9da7-ab09da7a567e.png)
+- [x] Highlight
 
-## Number
+![code](https://user-images.githubusercontent.com/17541209/75157389-f94f2280-574e-11ea-9cfd-5489ef20c670.png)
 
-![image](https://user-images.githubusercontent.com/17541209/56974004-94fc1a80-6ba0-11e9-840e-f09400881282.png)
+## Todo list
 
-## String
-
-![image](https://user-images.githubusercontent.com/17541209/56974042-a9401780-6ba0-11e9-82bc-8c7809faffea.png)
-
-## LisList
-
-![image](https://user-images.githubusercontent.com/17541209/56974145-e0aec400-6ba0-11e9-8967-d0dca13bee2d.png)
-
-## Cite
-
-![image](https://user-images.githubusercontent.com/17541209/56974218-04720a00-6ba1-11e9-8304-9df51c941860.png)
-
-## Macro
-
-![image](https://user-images.githubusercontent.com/17541209/56974268-194e9d80-6ba1-11e9-812a-064a64646fd2.png)
+- [ ] preview
+- [ ] formatter

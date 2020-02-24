@@ -1,11 +1,11 @@
 {
     "name": "vscode-notedown",
     "private": true,
-    "displayName": "Arc Language Support",
-    "description": "Highlight and formatter for Arc Readable Configiration",
+    "displayName": "Notedown Language Support",
+    "description": "Highlight and formatter for Notedown",
     "publisher": "aster",
-    "version": "0.3.0",
-    "icon": "logo.png",
+    "version": "0.1.1",
+    "icon": "media/icon.png",
     "repository": {
         "type": "git",
         "url": "https://github.com/GalAster/vscode-arc.git"
@@ -16,7 +16,7 @@
     ],
     "scripts": {
         "postinstall": "node ./node_modules/vscode/bin/install && tsc",
-        "build": "yarn lint && ts-node syntax/build.ts",
+        "build": "ts-node syntax/build.ts && tsc && yarn lint",
         "pack": "yarn build && vsce package",
         "lint": "tslint **/*.ts --fix"
     },
