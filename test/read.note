@@ -4,11 +4,19 @@
 \author: Aster
 \time: 2020-02-12
 
-\TOC
+\toc
 
 \comment: `注释`
 
 `\comment: 反注释`
+
+\image {
+    link = "https://i.loli.net/2020/02/12/jwMEzph9O8CTbAX.png",
+    hight = 200, width = 400
+}
+
+\def{path, "src/asserts/"}
+\import{path = path + "code.svg"}
 
 
 \comment: 贪婪匹配
@@ -17,10 +25,6 @@
 
 \highlight[css][from py import cs]
 
-\image{
-    link = "https://i.loli.net/2020/02/12/jwMEzph9O8CTbAX.png",
-    hight = 200, width = 400
-}
 
 \label{1, "https://i.loli.net/2020/02/12/jwMEzph9O8CTbAX.png"}
 

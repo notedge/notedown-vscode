@@ -4,7 +4,7 @@
     "displayName": "Notedown Language Support",
     "description": "Highlight and formatter for Notedown",
     "publisher": "aster",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "icon": "media/icon.png",
     "repository": {
         "type": "git",
@@ -112,15 +112,46 @@
                     "group": "navigation"
                 }
             ]
+        },
+        "configuration": {
+            "title": "notedown",
+            "properties": {
+                "notedown.useLanguageServer": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Use Notedown Language Server"
+                },
+                "notedown.useDevelopingLanguageServer": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "When this option is enabled, the binary built in the cargo directory will be forced to use."
+                },
+                "notedown.trace.server": {
+                    "type": "string",
+                    "default": "off",
+                    "enum": [
+                        "off",
+                        "messages",
+                        "verbose"
+                    ],
+                    "description": "Traces the communication between VS Code and the language server.",
+                    "scope": "window"
+                }
+            }
         }
     },
     "dependencies": {
-        "notedown_vscode": "^0.1.1"
+        "vscode-languageclient": "^7.0.0"
     },
     "devDependencies": {
         "@types/node": "^11.13.6",
         "tslint": "^6.0.0",
         "typescript": "^3.8.2",
         "vscode": "^1.1.33"
+    },
+    "__metadata": {
+        "id": "6cfdde9e-9431-4f0a-b992-612aaf9954b4",
+        "publisherDisplayName": "Aster",
+        "publisherId": "3406b78c-f287-4619-8d82-7c97998693e3"
     }
 }

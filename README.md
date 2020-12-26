@@ -13,6 +13,10 @@ Notedown support for VSCode
 
 ![code](https://user-images.githubusercontent.com/17541209/75157389-f94f2280-574e-11ea-9cfd-5489ef20c670.png)
 
+- [x] Table of Contents
+
+![Table of Contents](https://i.loli.net/2020/12/26/eb7rkWLmGJsEF13.png)
+
 ## Todo list
 
 - [ ] preview
